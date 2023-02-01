@@ -1,0 +1,25 @@
+import pandas as pd
+data = pd.read_csv("D:/titanic.csv")
+data=data.dropna()
+data.head()
+
+y=data["Survived"]
+x=data["Age"]
+data
+
+
+#splitting dtaa into training data and testing data
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+
+#plt scatter
+plt.scatter(x,y,color="blue")
+plt.show()
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.20)
+
+
+
+#for linear regression
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(x_train.values.reshape(-1,1),y_train)
